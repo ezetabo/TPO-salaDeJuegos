@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { PrimeNgModule } from './prime-ng/prime-ng.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { ModalModule } from 'ngx-bootstrap/modal';
+
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
     PrimeNgModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideFirestore(() => getFirestore()),
+    ModalModule.forRoot(),
 
   ],
   providers: [],

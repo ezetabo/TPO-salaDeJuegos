@@ -7,9 +7,11 @@ import { FormsModule } from '@angular/forms';
 import { PrimeNgModule } from 'src/app/prime-ng/prime-ng.module';
 
 
+
+
 @NgModule({
   declarations: [
-    PreguntadosComponent
+    PreguntadosComponent,
   ],
   imports: [
     CommonModule,

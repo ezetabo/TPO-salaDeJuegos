@@ -70,6 +70,17 @@ export function getCategoryById(id: number): string {
   return ctg;
 }
 
+export function getCategorias(): string[] {
+  const ctg: string[] = [
+    'Deportes', 'Geografia',
+    'Ciencia y naturaleza',
+    'Conocimientos generales',
+    'Historia y Politica',
+    'Arte','Entretenimiento'
+  ];
+  return ctg;
+}
+
 export function generarOpciones(arr: string[], nuevoElemento: string): string[] {
   arr.push(nuevoElemento);
   for (let i = arr.length - 1; i > 0; i--) {
@@ -80,12 +91,12 @@ export function generarOpciones(arr: string[], nuevoElemento: string): string[] 
 }
 
 export function getTimeNow(): string {
-  const date= new Date();
+  const date = new Date();
   const horaActual = date.toLocaleTimeString();
   return horaActual;
 }
 
-export function generarMensajes(cantidad:number):Chats[]{
+export function generarMensajes(cantidad: number): Chats[] {
   return Array.from({ length: cantidad }).map((_, i) => ({
     emisor: i % 2 === 0 ? 'Usuario 1' : 'Usuario 2',
     fecha: new Date().toISOString(),

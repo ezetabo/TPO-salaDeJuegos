@@ -12,6 +12,7 @@ import { ToastModule } from 'primeng/toast';
 import { ScrollerModule } from 'primeng/scroller';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ListboxModule } from 'primeng/listbox';
+import { ProgressBarModule } from 'primeng/progressbar';
 
 @NgModule({
   exports: [
@@ -27,7 +28,8 @@ import { ListboxModule } from 'primeng/listbox';
     ToastModule,
     ScrollerModule,
     ProgressSpinnerModule,
-    ListboxModule
+    ListboxModule,
+    ProgressBarModule
 
   ]
 })
