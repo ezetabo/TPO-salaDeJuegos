@@ -1,0 +1,8 @@
+
+.imagenes{
+  width: 30rem;
+  height: 30vw;
+  background-color: var(--surface-500);
+  border-radius: 30%;
+  margin-right: 2rem;
+}

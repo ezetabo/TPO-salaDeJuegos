@@ -1,0 +1,35 @@
+.principal {
+  background-image: url('src\assets\images\pxfuel.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  overflow: hidden;
+  opacity: 0.9;
+}
+
+.transparent-bg {
+  background-color: rgba(0, 0, 0, 0); /* Fondo transparente */
+}
+.texto-claro {
+  color: #fff;
+  font-size: 2.4rem;
+  font-family: 'retro-game';
+}
+
+.texto-claro2 {
+  color: #fff;
+  font-size: 1.2rem;
+  font-family: 'retro-game';
+  float: left;
+}
+
+.card {
+  width: 350px;
+  margin: auto;
+  margin-top: 150px;
+  border-radius: 10px;
+}
+

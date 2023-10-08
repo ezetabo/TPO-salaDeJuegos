@@ -1,0 +1,64 @@
+.cardContainer{
+  width: 70rem;
+  height: 35rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  background-image: url('https://img.freepik.com/free-vector/futuristic-landscape-background-retro-style_23-2148229857.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: retro-Game;
+  border-radius: 10%;
+  padding: 3rem;
+}
+
+.card-body{
+  padding: 0.5rem;
+  transform: scale(0.8);
+
+}
+
+.enviado{
+  display: block;
+  float: right;
+  background-color: rgb(151, 217, 248);
+  color: rgb(0, 0, 0);
+  min-width: 50.01%;
+  border-radius: 10px;
+  text-align: right;
+
+}
+
+#cabecera{
+  text-align: left;
+  color: rgb(204, 53, 53);
+  font-size: small;
+}
+
+.recibido{
+  display: block;
+  float: left;
+  background-color: rgb(231, 219, 219);
+  color: black;
+  min-width: 50.01%;
+  border-radius: 10px;
+  text-align: left;
+}
+
+.contendedorMensajes{
+  padding: 0.3rem;
+  overflow-y: auto;
+  max-height: 25rem;
+
+}
+.imgEnviar:active{
+  transform: scale(0.9);
+
+}
+
+

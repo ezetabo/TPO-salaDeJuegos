@@ -1,0 +1,41 @@
+<div class="principal">
+
+  <div class="container">
+
+    <div class="card text-center transparent-bg">
+      <div class="card-header">
+        <b class="texto-claro">Login</b>
+      </div>
+      <div class="card-body ">
+        <label class="texto-claro2">Email</label>
+        <input type="email" class="form-control " placeholder="ingrese su email"
+          [(ngModel)]="usuario.email">
+
+        <label class="texto-claro2 mt-2">Password</label>
+        <div class="input-group">
+          <input
+            type="{{ showPassword ? 'text' : 'password' }}"
+            class="form-control"
+            placeholder="Ingrese su contraseña"
+            [(ngModel)]="usuario.password">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button"
+              (click)="togglePasswordVisibility()">
+              <i [ngClass]="showPassword ? 'pi pi-eye':'pi pi-eye-slash'"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="d-grid ">
+          <button
+            class="btn btn-primary m-3"
+            type="button"
+            (click)="ingresar()">Ingresar</button>
+          <label class="texto-claro2">No tienes una cuenta?
+            <a href="#" routerLink="/register"> Registrarse</a></label>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

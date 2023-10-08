@@ -1,0 +1,52 @@
+<div class="container">
+  <div class="grid nested-grid ">
+    <div class="md:col-6 mt-3">
+      <div class="text-center p-3 border-round-sm font-bold">
+        <h1 class="text-indigo-50">Juego del Ahorcado</h1>
+        <img
+          src="assets/ahorcado/{{intentos}}.png"
+          class="ahorcado-img" />
+        <h3 class="text-indigo-50">Intentos: {{intentos}} / 9 </h3>
+      </div>
+    </div>
+    <div class="md:col-6 oculta">
+      <div class="grid">
+        <div class="col-12">
+          <div class="text-center p-3 border-round-sm  font-bold ">
+            <h1 class="text-indigo-50">{{palabraOculta}}</h1>
+          </div>
+        </div>
+
+        <div class="md:col-12 mt-2">
+          <div class="text-center p-3 border-round-sm  font-bold">
+
+            <ng-template [ngIf]="!gano && !perdio">
+              <button
+                (click)="comprobar(letra)"
+                *ngFor="let letra of letras"
+                [ngClass]="{'btn-primario': !letrasClickeadas[letra], 'btn-secundario': letrasClickeadas[letra]}"
+                [disabled]="letrasClickeadas[letra]">
+                {{letra.toUpperCase()}}
+              </button>
+            </ng-template>
+
+            <ng-template [ngIf]="gano">
+              <h1 class="text-teal-600">Felicidades! Ganaste!!! :D</h1>
+              <button type="button" class="btn btn-info mt-2"
+                (click)="inicializarJuego()">reiniciar</button>
+            </ng-template>
+
+            <ng-template [ngIf]="perdio">
+              <h3 class="text-red-700">Lo siento :( Perdiste!</h3>
+              <h4 class="text-blue-300">La palabra correcta era: "{{palabra}}"</h4>
+              <button type="button" class="btn btn-info mt-2"
+                (click)="inicializarJuego()">reiniciar</button>
+            </ng-template>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

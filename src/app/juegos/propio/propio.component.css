@@ -1,0 +1,8 @@
+*{
+  background-color: aliceblue;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('https://www.concordia.gob.ar/sites/default/files/construccion.png');
+  background-repeat: no-repeat;
+  background-position: center;
+}

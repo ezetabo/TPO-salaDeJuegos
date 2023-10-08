@@ -1,0 +1,32 @@
+
+
+<div class="card text-center mt-4 text-light bg-dark cardContainer">
+
+  <div class="card-header">
+    CHAT
+  </div>
+
+  <div id="contendedorMensajes" class="card-body contendedorMensajes h-100"
+    #contenedorMensajes>
+    <p *ngFor="let item of items" class="p-2"
+      [ngClass]="(usuario == item.emisor)? 'enviado':'recibido'">
+      <span id="cabecera"> {{item.emisor}}  -  {{item.fecha | date:'short'}}</span>
+      <br>
+      {{item.mensaje}}
+
+    </p>
+  </div>
+
+  <form class="card-footer text-muted input-group"
+  (ngSubmit)="enviarMensaje()">
+  <input type="text" class="form-control" placeholder="Ingrese su mensaje"
+  [(ngModel)]="nuevoMensaje"
+  [ngModelOptions]="{standalone: true}">
+  <div class="input-group-append" (click)="enviarMensaje()">
+  <span class="input-group-text m-1" id="basic-addon2">
+        <img class="imgEnviar"
+        src="https://i.pinimg.com/originals/27/f2/46/27f24673af89f5195b22009680bf08ea.jpg" alt="sent" width="30" height="30"/>
+      </span>
+    </div>
+    </form>
+</div>

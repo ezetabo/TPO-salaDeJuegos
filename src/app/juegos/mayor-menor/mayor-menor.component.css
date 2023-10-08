@@ -1,0 +1,29 @@
+.elementos{
+  margin-left: 3rem;
+}
+
+
+
+.btn {
+  width: 20rem;
+
+}
+.btn-2 {
+  width: 20rem;
+  margin-left: 12rem;
+}
+
+.cartaActual{
+  margin-right: 20rem;
+}
+
+.cartaAnterior{
+  margin-left: 15rem;
+}
+
+.txt-anterior{
+  margin-left: 16rem;
+}
+.btn-reinicio{
+  border-radius: 50%;
+}

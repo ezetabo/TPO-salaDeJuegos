@@ -1,0 +1,43 @@
+
+<div class="grid grid-nogutter mt-8">
+  <div class="col-12">
+    <div class="text-left p-3 border-round-sm bg-primary font-bold">
+      <h4><b>Aciertos: {{correctas}}</b></h4>
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="text-center p-3 border-round-sm bg-primary font-bold">
+      <ng-template [ngIf]="pregunta">
+      <h2><b>CATEGORIA: {{pregunta.group}}</b></h2>
+    </ng-template>
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="text-center p-3 border-round-sm bg-primary font-bold">
+      <div class="flex flex-wrap align-items-center justify-content-center">
+        <div class="zoomin animation-duration-1000 animation-iteration-2 flex align-items-center justify-content-center
+            font-bold bg-primary border-round m-2 px-5 py-3">
+            <ng-template [ngIf]="pregunta">
+              <h3>{{pregunta.question}}</h3>
+            </ng-template>
+        </div>
+    </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="text-center p-3 border-round-sm bg-primary font-bold">
+      <div class="flex flex-wrap align-items-center justify-content-center">
+        <div class=" flex align-items-center justify-content-center
+            font-bold bg-primary border-round m-2 px-5 py-3">
+            <button
+            *ngFor="let opcion of opciones"
+            (click)="responder(opcion)"
+              class="btn btn-primary  flipleft animation-duration-100000 animation-iteration-1"
+              >
+              {{opcion}}
+            </button>
+        </div>
+    </div>
+    </div>
+  </div>
+</div>

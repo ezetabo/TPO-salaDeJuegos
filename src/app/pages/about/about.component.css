@@ -1,0 +1,19 @@
+.contenido {
+  height: 90vh;
+  width: 100vw;
+  background-color: hsl(192, 40%, 65%);
+}
+
+.foto {
+  border-radius: 50%;
+  margin-left: 9%;
+  margin-top: 1.5%;
+}
+.datos{
+  align-content:center;
+}
+
+#iconos-personales{
+  width: 1rem;
+  height: 1rem;
+}

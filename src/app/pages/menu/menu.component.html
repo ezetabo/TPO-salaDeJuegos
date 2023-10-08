@@ -1,0 +1,17 @@
+<p-menubar [model]="menuItems">
+  <ng-template pTemplate="start">
+    <img src="./assets/images/game_icon_155348.svg" />
+
+  </ng-template>
+
+  <ng-template pTemplate="end">
+    <i class="pi pi-user p-1 mx-5" style="font-size:1.5rem" (click)="getUser()">  {{  userEmail}}</i>
+    <button class="bton">
+      <i class="pi pi-power-off p-1" style="font-size:1.5rem"
+        (click)="logout()"></i>
+    </button>
+  </ng-template>
+</p-menubar>
+
+  <router-outlet></router-outlet>
+

@@ -1,0 +1,43 @@
+<div class="container">
+  <h1 class="text-indigo-50 mt-2">Aciertos: {{score}}</h1>
+  <div class="grid mt-2">
+    <div class="col-6">
+      <div class="p-3 border-round-sm ont-bold ">
+        <p-image class="cartaAnterior" [src]="cartaAnterior!.image" alt="Image"
+          width="200"></p-image>
+        <h3 class="txt-anterior text-indigo-50 mt-2">Carta Anterior</h3>
+      </div>
+    </div>
+    <div class="col-6">
+      <div class="p-3 border-round-sm ont-bold">
+        <p-image class="ml-6" [src]="cartaActual!.image" alt="Image" width="200"></p-image>
+        <h3 class="text-indigo-50 mt-2 ml-7">Carta Actual</h3>
+      </div>
+    </div>
+    <ng-template [ngIf]="estado=='ok'">
+      <div class="col-6">
+        <div class="p-3 border-round-sm ont-bold">
+          <button class="btn btn-2 btn-danger btn-lg" (click)="jugar('menor')">menor</button>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="p-3 border-round-sm ont-bold">
+          <button class="btn btn-success btn-lg" (click)="jugar('mayor')">mayor</button>
+        </div>
+      </div>
+    </ng-template>
+    <ng-template [ngIf]="estado !='ok'">
+      <div class="col-12">
+        <div class="text-center  border-round-sm font-bold">
+          <ng-template [ngIf]="estado =='gano'">
+            <h1 class="text-teal-600">Felicidades! Ganaste!!! :D</h1>
+          </ng-template>
+          <ng-template [ngIf]="estado =='perdio'">
+            <h1 class="text-red-700">Lo siento :( Perdiste!</h1>
+          </ng-template>
+          <button class="btn btn-success btn-lg" (click)="reiniciar()">reiniciar</button>
+        </div>
+      </div>
+    </ng-template>
+  </div>
+</div>
