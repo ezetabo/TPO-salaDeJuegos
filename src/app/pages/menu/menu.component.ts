@@ -8,8 +8,10 @@ import { MenuItem } from 'primeng/api';
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
+
   userEmail: string | null = null;
   public menuItems: MenuItem[] = [];
+
   constructor(private auth: AuthService) { }
 
   ngOnInit(): void {
@@ -60,18 +62,14 @@ export class MenuComponent implements OnInit {
     ];
   }
 
-
   logout() {
     this.auth.logout();
   }
-
-
 
   getUser() {
     this.auth.getUserEmail()
       .subscribe(email => {
         this.userEmail = this.userEmail != null ? null : email;
       });
-
   }
 }

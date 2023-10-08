@@ -18,12 +18,12 @@ import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AppRoutingModule,
+    BrowserAnimationsModule,
     BrowserModule,
-    provideFirestore(() => getFirestore()),
     HttpClientModule,
     PrimeNgModule,
-    BrowserAnimationsModule,
-    provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
+    provideFirestore(() => getFirestore()),
 
   ],
   providers: [],

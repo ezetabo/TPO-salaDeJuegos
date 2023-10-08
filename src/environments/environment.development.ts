@@ -1,14 +1,5 @@
 export const environment = {
   production: false,
-  firebase: {
-    projectId: 'tp-taboada-ezequiel-cb576',
-    appId: '1:609316005400:web:845ec02872989fdd97c56d',
-    storageBucket: 'tp-taboada-ezequiel-cb576.appspot.com',
-    apiKey: 'AIzaSyBIFG92QYYX9NdeMFuCJHPLXDlqkeYetVg',
-    authDomain: 'tp-taboada-ezequiel-cb576.firebaseapp.com',
-    messagingSenderId: '609316005400',
-    measurementId: 'G-KLB2VC5CJ8',
-  },
   firebaseConfig: {
     apiKey: "AIzaSyBIFG92QYYX9NdeMFuCJHPLXDlqkeYetVg",
     authDomain: "tp-taboada-ezequiel-cb576.firebaseapp.com",

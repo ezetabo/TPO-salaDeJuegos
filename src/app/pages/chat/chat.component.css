@@ -1,4 +1,4 @@
-.cardContainer{
+.cardContainer {
   width: 70rem;
   height: 35rem;
   margin: 0 auto;
@@ -17,13 +17,12 @@
   padding: 3rem;
 }
 
-.card-body{
+.card-body {
   padding: 0.5rem;
   transform: scale(0.8);
-
 }
 
-.enviado{
+.enviado {
   display: block;
   float: right;
   background-color: rgb(151, 217, 248);
@@ -31,16 +30,15 @@
   min-width: 50.01%;
   border-radius: 10px;
   text-align: right;
-
 }
 
-#cabecera{
+#cabecera {
   text-align: left;
   color: rgb(204, 53, 53);
   font-size: small;
 }
 
-.recibido{
+.recibido {
   display: block;
   float: left;
   background-color: rgb(231, 219, 219);
@@ -50,15 +48,34 @@
   text-align: left;
 }
 
-.contendedorMensajes{
+.contendedorMensajes {
   padding: 0.3rem;
   overflow-y: auto;
   max-height: 25rem;
-
 }
-.imgEnviar:active{
+
+.contendedorMensajes::-webkit-scrollbar {
+  display: none;
+}
+
+.imgEnviar:active {
   transform: scale(0.9);
-
 }
 
 
+@media (max-width: 768px) {
+  .cardContainer {
+    width: 90%;
+    max-width: 800px;
+    padding: 1rem;
+  }
+
+  .enviado,
+  .recibido {
+    min-width: 100%;
+  }
+
+  #cabecera {
+    font-size: smaller;
+  }
+}

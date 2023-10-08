@@ -2,7 +2,8 @@ import { AfterViewChecked, Component, ElementRef, ViewChild } from '@angular/cor
 
 import { Chats } from 'src/app/interfaces/chats.interface';
 import { AuthService } from 'src/app/services/auth.service';
-import { generarMensajes } from 'src/app/utils/helper-functions';
+import { ChatDBService } from 'src/app/services/chatDB.service';
+
 
 @Component({
   selector: 'app-chat',
@@ -10,33 +11,35 @@ import { generarMensajes } from 'src/app/utils/helper-functions';
   styleUrls: ['./chat.component.css']
 })
 export class ChatComponent implements AfterViewChecked {
-  @ViewChild('contenedorMensajes') private contenedorMensajes: ElementRef | undefined;
 
+  @ViewChild('contenedorMensajes')
+  private contenedorMensajes: ElementRef | undefined;
 
   items: Chats[] = [];
   nuevoMensaje: string = '';
-  usuario: string = 'Usuario 1';
+  usuario: string = '';
 
-  constructor(private aS: AuthService) { }
+  constructor(private aS: AuthService, private cS: ChatDBService) { }
 
   ngOnInit(): void {
     this.aS.getUserEmail().subscribe(user => this.usuario = user!);
-    this.items = generarMensajes(3);
-    this.desplazarAlFinal();
+    this.cS.getData().subscribe((nuevosMensajes) => {
+      this.items = [...this.items, ...nuevosMensajes];
+      this.desplazarAlFinal();
+    });
   }
 
-  enviarMensaje() {
-    const newChat: Chats = {
-      emisor: this.usuario,
-      fecha: new Date().toISOString(),
-      mensaje: this.nuevoMensaje
-    };
-    this.items.push(newChat);
-    this.nuevoMensaje = '';
-
+  async enviarMensaje() {
+    if (this.nuevoMensaje != '') {
+      const newChat: Chats = {
+        emisor: this.usuario,
+        fecha: new Date().toISOString(),
+        mensaje: this.nuevoMensaje
+      };
+      await this.cS.addData(newChat);
+      this.nuevoMensaje = '';
+    }
   }
-
-
 
   ngAfterViewChecked() {
     this.desplazarAlFinal();

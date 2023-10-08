@@ -92,3 +92,4 @@ export function generarMensajes(cantidad:number):Chats[]{
     mensaje: `Mensaje #${i + 1}`,
   }));
 }
+

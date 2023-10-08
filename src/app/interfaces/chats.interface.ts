@@ -1,5 +1,6 @@
-export interface Chats{
-  emisor:string,
-  fecha:string;
-  mensaje:string;
+export interface Chats {
+  id?: string;
+  emisor: string;
+  fecha: string;
+  mensaje: string;
 }
