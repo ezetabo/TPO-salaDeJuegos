@@ -1,11 +1,12 @@
+import { Ctg } from './../../interfaces/ctg.interface';
 import { Component, OnInit } from '@angular/core';
 
 import { Pregunta } from 'src/app/interfaces/prengutas.interface';
 
 import { TriviaApiService } from 'src/app/services/trivia.service';
-import { generarOpciones, getCategorias, getIdByCategory } from '../../utils/helper-functions';
+import { generarOpciones, getCategorias, getIdByCategory, cambiarEstadoDeCategoria, getCategoryById } from '../../utils/helper-functions';
 import Swal from 'sweetalert2';
-import { Ctg } from 'src/app/interfaces/ctg.interface';
+
 
 @Component({
   selector: 'app-preguntados',
@@ -17,10 +18,10 @@ export class PreguntadosComponent implements OnInit {
   public respuesta: string = '';
   public correctas: number = 0;
   public opciones: string[] = [];
-  public categoria: string = '';
+  public categoria: Ctg = { nombre: '', ganada: false };
   public categorias: Ctg[] = [];
   public pregunta?: Pregunta;
-  public cantidadDeBarras = 3;
+  public cantidadDeBarras = 0;
   public ocultarCtg: boolean = false;
 
   constructor(private servTrivia: TriviaApiService) {
@@ -39,7 +40,7 @@ export class PreguntadosComponent implements OnInit {
       .subscribe(p => {
         if (p) {
           this.pregunta = p;
-          this.categoria = p.category;
+          this.categoria.nombre = p.group;
           this.opciones = generarOpciones(this.pregunta.incorrect_answers, this.pregunta.correct_answer)
           console.log(this.pregunta.correct_answer)
         } else {
@@ -57,7 +58,7 @@ export class PreguntadosComponent implements OnInit {
       .subscribe(p => {
         if (p) {
           this.pregunta = p;
-          this.categoria = p.category;
+          this.categoria.nombre = getCategoryById(catg);
           this.opciones = generarOpciones(this.pregunta.incorrect_answers, this.pregunta.correct_answer)
           console.log(this.pregunta.correct_answer)
         } else {
@@ -66,10 +67,12 @@ export class PreguntadosComponent implements OnInit {
       });
   }
 
-  responder(res: string): void {
+  responder(res: string, corona: boolean = false): boolean {
+    let ok = false;
     if (this.pregunta!.correct_answer === res) {
       this.cantidadDeBarras += 1;
       this.correctas += 1;
+      ok = true;
       Swal.fire({
         position: 'center-end',
         icon: 'success',
@@ -84,16 +87,22 @@ export class PreguntadosComponent implements OnInit {
         text: `"Incorrecto"\n Respuesta correcta: "${this.pregunta!.correct_answer}"`
       });
     }
-
-    this.categoria = '';
+    if (!corona) {
+      this.categoria.nombre = '';
+    }
     this.pregunta = undefined;
+    return ok;
   }
 
   responderCorona(res: string): void {
-    this.responder(res);
+    if (this.responder(res,true)) {
+      console.log(`ctg: ${this.categoria.nombre}`)
+      this.categorias = cambiarEstadoDeCategoria(this.categoria, this.categorias);
+    }
     if (this.cantidadDeBarras >= 3) {
       this.cantidadDeBarras = 0;
       this.ocultarCtg = false;
     }
+    this.categoria.nombre = '';
   }
 }

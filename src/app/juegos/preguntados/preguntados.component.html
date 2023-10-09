@@ -41,14 +41,14 @@
           </div>
           <div class="col-fixed" style="width: 300px">
             <div class="text-center p-3 border-round-sm bg-primary font-bold">
-              {{this.categoria}}
+              {{this.categoria.nombre}}
             </div>
           </div>
         </div>
       </div>
       <ng-template #elseBlock>
         <div *ngIf="ocultarCtg; else elseBlock">
-          <h1>{{this.categoria}}</h1>
+          <h1>{{this.categoria.nombre}}</h1>
         </div>
         <ng-template #elseBlock>
           <div class="grid">
@@ -74,7 +74,21 @@
     <div
       class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round"
       style="width: 700px; min-width: 200px; min-height: 280px">
-      <!-- aca codigo -->3
+
+      <div class="grid">
+        <div class="col">
+          <div class="text-center p-3 border-round-sm bg-primary font-bold">
+            <h1>CORONAS GANADAS</h1>
+            <button *ngFor="let opcion of categorias"
+              [ngClass]="opcion.ganada ? 'btn-secundario' : 'btn-primario'"
+              [disabled]="true"
+              class="btn btn-primary flipleft animation-duration-100000 animation-iteration-1">
+              {{opcion.nombre}}
+            </button>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 

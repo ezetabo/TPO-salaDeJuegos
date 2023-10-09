@@ -14,6 +14,7 @@ export function getIdByCategory(nombre: string): number {
       id = 21;
       break;
     case 'Geografía':
+    case 'Geografia':
       id = 22;
       break;
     case 'Ciencia':
@@ -25,6 +26,7 @@ export function getIdByCategory(nombre: string): number {
       break;
     case 'Conocimientos generales':
     case 'Mitología':
+    case 'Mitologia':
     case 'Vehículos':
       ids = [9, 20, 28]
       id = ids[Math.floor(Math.random() * ids.length)];
@@ -80,6 +82,14 @@ export function getCategorias(): Ctg[] {
     { nombre: 'Arte', ganada: false }, { nombre: 'Entretenimiento', ganada: false }
   ];
   return ctg;
+}
+
+export function cambiarEstadoDeCategoria(categoria: Ctg, categorias: Ctg[]): Ctg[] {
+  const categoriaEncontrada = categorias.find(ctg => ctg.nombre == categoria.nombre);
+  if (categoriaEncontrada) {
+    categoriaEncontrada.ganada = true;
+  }
+  return categorias
 }
 
 export function generarOpciones(arr: string[], nuevoElemento: string): string[] {
