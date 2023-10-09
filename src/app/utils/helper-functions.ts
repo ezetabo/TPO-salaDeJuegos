@@ -1,4 +1,5 @@
 import { Chats } from "../interfaces/chats.interface";
+import { Ctg } from '../interfaces/ctg.interface';
 
 export function getIdByCategory(nombre: string): number {
   const catg = nombre.split(':');
@@ -70,13 +71,13 @@ export function getCategoryById(id: number): string {
   return ctg;
 }
 
-export function getCategorias(): string[] {
-  const ctg: string[] = [
-    'Deportes', 'Geografia',
-    'Ciencia y naturaleza',
-    'Conocimientos generales',
-    'Historia y Politica',
-    'Arte','Entretenimiento'
+export function getCategorias(): Ctg[] {
+  const ctg: Ctg[] = [
+    { nombre: 'Deportes', ganada: false }, { nombre: 'Geografia', ganada: false },
+    { nombre: 'Ciencia y naturaleza', ganada: false },
+    { nombre: 'Conocimientos generales', ganada: false },
+    { nombre: 'Historia y Politica', ganada: false },
+    { nombre: 'Arte', ganada: false }, { nombre: 'Entretenimiento', ganada: false }
   ];
   return ctg;
 }

@@ -3,3 +3,24 @@
    margin-left: 5px;
  }
 
+ .btn-secundario {
+   background-color: #007bff;
+   color: #fff;
+   border: none;
+   margin-top: 5px;
+   margin-left: 5px;
+
+   padding: 3px;
+   width: 15rem;
+ }
+
+ .btn-primario {
+   background-color: #787d6c;
+   color: #fff;
+   border: none;
+   margin-top: 5px;
+   margin-left: 5px;
+   padding: 3px;
+   width: 15rem;
+
+ }

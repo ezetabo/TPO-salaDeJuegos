@@ -1,12 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { TriviaCategory } from 'src/app/interfaces/categorias.interface';
+
 import { Pregunta } from 'src/app/interfaces/prengutas.interface';
 
 import { TriviaApiService } from 'src/app/services/trivia.service';
-import { generarOpciones, getCategorias } from '../../utils/helper-functions';
+import { generarOpciones, getCategorias, getIdByCategory } from '../../utils/helper-functions';
 import Swal from 'sweetalert2';
-import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-
+import { Ctg } from 'src/app/interfaces/ctg.interface';
 
 @Component({
   selector: 'app-preguntados',
@@ -19,11 +18,12 @@ export class PreguntadosComponent implements OnInit {
   public correctas: number = 0;
   public opciones: string[] = [];
   public categoria: string = '';
-  public categorias: string[] = [];
+  public categorias: Ctg[] = [];
   public pregunta?: Pregunta;
-  public cantidadDeBarras = 0;
+  public cantidadDeBarras = 3;
+  public ocultarCtg: boolean = false;
 
-  constructor(private servTrivia: TriviaApiService, private modalService: BsModalService) {
+  constructor(private servTrivia: TriviaApiService) {
 
 
   }
@@ -50,15 +50,18 @@ export class PreguntadosComponent implements OnInit {
 
   }
 
-  preguntaByCategoria(catg: number): void {
+  preguntaByCategoria(corona: string): void {
+    this.ocultarCtg = true;
+    const catg: number = getIdByCategory(corona);
     this.servTrivia.getPreguntaByCategoria(catg)
       .subscribe(p => {
         if (p) {
           this.pregunta = p;
+          this.categoria = p.category;
           this.opciones = generarOpciones(this.pregunta.incorrect_answers, this.pregunta.correct_answer)
           console.log(this.pregunta.correct_answer)
         } else {
-          this.preguntaByCategoria(catg)
+          this.preguntaByCategoria(corona)
         }
       });
   }
@@ -81,15 +84,16 @@ export class PreguntadosComponent implements OnInit {
         text: `"Incorrecto"\n Respuesta correcta: "${this.pregunta!.correct_answer}"`
       });
     }
+
     this.categoria = '';
     this.pregunta = undefined;
-    if (this.cantidadDeBarras == 3) {
-      //aca deberiaelegir categoria...
-    }
   }
 
-
-
-
-
+  responderCorona(res: string): void {
+    this.responder(res);
+    if (this.cantidadDeBarras >= 3) {
+      this.cantidadDeBarras = 0;
+      this.ocultarCtg = false;
+    }
+  }
 }
