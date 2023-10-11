@@ -5,6 +5,7 @@
       <div class="flex mt-3 mb-3">
         <button type="button" class="btn btn-outline-primary m-2"
           (click)="newGame()">Juego Nuevo</button>
+        <button type="button" class="btn btn-outline-danger m-2" (click)="reintentar()">Reintentar</button>
         <button type="button" class="btn btn-outline-warning m-2" (click)="check()">Check</button>
         <button type="button" class="btn btn-outline-success m-2"
           (click)="entregar()">Entregar</button>
@@ -18,10 +19,17 @@
                   class="sudoku-row">
                   <div *ngFor="let col of [0, 1, 2]; let colIndex = index"
                     class="sudoku-cell">
-                    <input class="box" type="number" min="0" max="9"
-                      [(ngModel)]="sudokuJugador.value[i * 3 + rowIndex][j * 3 + colIndex]"
-                      [readonly]="isInitialValue(i * 3 + rowIndex, j * 3 + colIndex,solution)"
-                      (click)="solution = false" />
+                    <input
+                    class="box"
+                    type="number"
+                    min="1"
+                    max="9"
+                    [(ngModel)]="sudokuJugador.value[i * 3 + rowIndex][j * 3 + colIndex]"
+                    [readonly]="isInitialValue(i * 3 + rowIndex, j * 3 + colIndex, solution)"
+                    (keydown)="disableKeyboardInput($event)"
+                    (click)="solution = false"
+                  />
+
                   </div>
                 </div>
               </div>

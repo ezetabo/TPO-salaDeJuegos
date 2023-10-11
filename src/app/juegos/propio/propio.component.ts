@@ -10,17 +10,12 @@ import Swal from 'sweetalert2';
   templateUrl: './propio.component.html',
   styleUrls: ['./propio.component.css']
 })
-export class PropioComponent implements OnInit {
+export class PropioComponent {
   public sudokuData!: Grid;
-  public sudokuJugador!: Grid;
+  public sudokuJugador?: Grid;
   public solution: boolean = false;
 
   constructor(private sS: SodokuService) { }
-
-  ngOnInit(): void {
-
-  }
-
 
   newGame(): void {
     this.sS.getGrid().subscribe(tbl => {
@@ -32,6 +27,13 @@ export class PropioComponent implements OnInit {
 
   check() {
     this.solution = !this.solution;
+  }
+
+
+  reintentar() {
+    if (this.sudokuData) {
+      this.sudokuJugador = deepCopy(this.sudokuData);
+    }
   }
 
 
@@ -62,9 +64,9 @@ export class PropioComponent implements OnInit {
   isInitialValue(row: number, col: number, solucion: boolean = false): boolean {
 
     if (solucion) {
-      return this.sudokuData.solution![row][col] == this.sudokuJugador.value![row][col];
+      return this.sudokuData.solution![row][col] == this.sudokuJugador!.value[row][col];
     } else {
-      return this.sudokuData.value[row][col] !== 0;
+      return this.sudokuData.value[row][col] > 0;
     }
   }
 
@@ -74,4 +76,9 @@ export class PropioComponent implements OnInit {
     }
     return false;
   }
+
+  disableKeyboardInput(event: KeyboardEvent): void {
+    event.preventDefault();
+  }
+
 }
