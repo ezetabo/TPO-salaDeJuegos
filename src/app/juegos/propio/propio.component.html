@@ -1,23 +1,38 @@
 
-<div class="center-container">
-  <table id="sudoku" *ngIf="sudokuData">
-    <tbody>
-      <tr *ngFor="let i of [0, 1, 2]">
-        <td *ngFor="let j of [0, 1, 2]">
-          <div class="sudoku-block">
-            <div *ngFor="let row of [0, 1, 2]; let rowIndex = index"
-              class="sudoku-row">
-              <div *ngFor="let col of [0, 1, 2]; let colIndex = index"
-                class="sudoku-cell">
-                <input class="box" type="number" min="0" max="9"
-                  [(ngModel)]="sudokuJugador.value[i * 3 + rowIndex][j * 3 + colIndex]"
-                  [readonly]="isInitialValue(i * 3 + rowIndex, j * 3 + colIndex)"/>
+<div class="contenido">
+  <div class="row">
+    <div class="col-6">
+      <div class="flex mt-3 mb-3">
+        <button type="button" class="btn btn-outline-primary m-2"
+          (click)="newGame()">Juego Nuevo</button>
+        <button type="button" class="btn btn-outline-warning m-2" (click)="check()">Check</button>
+        <button type="button" class="btn btn-outline-success m-2"
+          (click)="entregar()">Entregar</button>
+      </div>
+      <table id="sudoku" *ngIf="sudokuJugador">
+        <tbody>
+          <tr *ngFor="let i of [0, 1, 2]">
+            <td *ngFor="let j of [0, 1, 2]">
+              <div class="sudoku-block">
+                <div *ngFor="let row of [0, 1, 2]; let rowIndex = index"
+                  class="sudoku-row">
+                  <div *ngFor="let col of [0, 1, 2]; let colIndex = index"
+                    class="sudoku-cell">
+                    <input class="box" type="number" min="0" max="9"
+                      [(ngModel)]="sudokuJugador.value[i * 3 + rowIndex][j * 3 + colIndex]"
+                      [readonly]="isInitialValue(i * 3 + rowIndex, j * 3 + colIndex,solution)"
+                      (click)="solution = false" />
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <button (click)="check()">Resultado</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-6">
+      <h3 style="color: aliceblue;"></h3>
+    </div>
+  </div>
+
 </div>

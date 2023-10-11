@@ -27,13 +27,11 @@
   text-align: center;
 }
 
-/* .center-container {
+.contenido {
   margin-top: 3rem;
-  margin-left: 20rem;
-  display: flex;
-  align-items: center;
+  margin-left: 5rem;
 
-} */
+}
 
 .sudoku-table {
   width: 100%;
@@ -44,4 +42,11 @@ input[readonly] {
   background-color: rgb(68, 113, 119);
   color: black;
   font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .contenido {
+    margin: 0;
+    padding: 10px;
+  }
 }

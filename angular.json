@@ -39,7 +39,8 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "allowedCommonJsDependencies": [
-              "sweetalert2"
+              "sweetalert2",
+              "lodash"
             ],
             "outputPath": "dist/tpo-sala-de-juegos",
             "index": "src/index.html",
