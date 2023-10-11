@@ -1,4 +1,23 @@
-<div class="contenido">
 
+<div class="center-container">
+  <table id="sudoku" *ngIf="sudokuData">
+    <tbody>
+      <tr *ngFor="let i of [0, 1, 2]">
+        <td *ngFor="let j of [0, 1, 2]">
+          <div class="sudoku-block">
+            <div *ngFor="let row of [0, 1, 2]; let rowIndex = index"
+              class="sudoku-row">
+              <div *ngFor="let col of [0, 1, 2]; let colIndex = index"
+                class="sudoku-cell">
+                <input class="box" type="number" min="0" max="9"
+                  [(ngModel)]="sudokuJugador.value[i * 3 + rowIndex][j * 3 + colIndex]"
+                  [readonly]="isInitialValue(i * 3 + rowIndex, j * 3 + colIndex)"/>
+              </div>
+            </div>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <button (click)="check()">Resultado</button>
 </div>
-

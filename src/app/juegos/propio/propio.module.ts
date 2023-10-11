@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { PropioRoutingModule } from './propio-routing.module';
 import { PropioComponent } from './propio.component';
 import { PrimeNgModule } from 'src/app/prime-ng/prime-ng.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +14,9 @@ import { PrimeNgModule } from 'src/app/prime-ng/prime-ng.module';
   imports: [
     CommonModule,
     PropioRoutingModule,
-    PrimeNgModule
+    PrimeNgModule,
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class PropioModule { }

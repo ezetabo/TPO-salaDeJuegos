@@ -1,120 +1,127 @@
-
-<div class="flex flex-wrap-reverse md:flex-wrap mt-3">
-  <div class="col-6 pos1">
-    <div
-      class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round"
-      style="width: 700px; min-width: 200px; min-height: 280px">
-      <div class="barras" style="display: flex; gap: 10px;">
-        <div class="progress" role="progressbar" aria-label="Warning example"
-          aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
-          style="width: 50px;">
-          <div class="progress-bar text-bg-warning"
-            [style.width]="cantidadDeBarras >0 ? '100%' : '0%'"></div>
-        </div>
-        <div class="progress" role="progressbar" aria-label="Warning example"
-          aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
-          style="width: 50px;">
-          <div class="progress-bar text-bg-warning"
-            [style.width]="cantidadDeBarras >1 ? '100%' : '0%'"></div>
-        </div>
-        <div class="progress" role="progressbar" aria-label="Warning example"
-          aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
-          style="width: 50px;">
-          <div class="progress-bar text-bg-warning"
-            [style.width]="cantidadDeBarras >2 ? '100%' : '0%'"></div>
+<div class="juego">
+  <div class="flex flex-wrap-reverse md:flex-wrap mt-3">
+    <div class="col-6 pos1">
+      <div
+        class="flex align-items-center justify-content-center bg-primary-reverse font-bold m-2 border-round"
+        style="width: 700px; min-width: 200px; min-height: 280px">
+        <div class="barras" style="display: flex; gap: 10px;">
+          <div class="progress" role="progressbar" aria-label="Warning example"
+            aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+            style="width: 50px;">
+            <div class="progress-bar text-bg-warning"
+              [style.width]="cantidadDeBarras >0 ? '100%' : '0%'"></div>
+          </div>
+          <div class="progress" role="progressbar" aria-label="Warning example"
+            aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+            style="width: 50px;">
+            <div class="progress-bar text-bg-warning"
+              [style.width]="cantidadDeBarras >1 ? '100%' : '0%'"></div>
+          </div>
+          <div class="progress" role="progressbar" aria-label="Warning example"
+            aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"
+            style="width: 50px;">
+            <div class="progress-bar text-bg-warning"
+              [style.width]="cantidadDeBarras >2 ? '100%' : '0%'"></div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="col-6 pos2">
-    <div
-      class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round"
-      style="width: 700px; min-width: 200px; min-height: 280px">
-      <div *ngIf="cantidadDeBarras != 3 ; else elseBlock">
+
+    <div class="col-6 pos3">
+      <div
+        class="flex align-items-center justify-content-center bg-primary-reverse font-bold m-2 border-round"
+        style="width: 700px; min-width: 200px; min-height: 280px">
+
         <div class="grid">
           <div class="col">
-            <div class="text-center p-3 border-round-sm bg-primary font-bold">
-              <p-button label="Generar pregunta"
-                styleClass="p-button-rounded p-button-info"
-                (click)="generarPregunta()"></p-button>
-            </div>
-          </div>
-          <div class="col-fixed" style="width: 300px">
-            <div class="text-center p-3 border-round-sm bg-primary font-bold">
-              {{this.categoria.nombre}}
+            <div class="text-center p-3 border-round-sm font-bold">
+              <h1>CORONAS GANADAS</h1>
+              <button *ngFor="let opcion of categorias"
+                [ngClass]="opcion.ganada ? 'btn-secundario' : 'btn-primario'"
+                [disabled]="true"
+                class="btn btn-primary flipleft animation-duration-100000 animation-iteration-1">
+                {{opcion.nombre}}
+              </button>
             </div>
           </div>
         </div>
+
       </div>
-      <ng-template #elseBlock>
-        <div *ngIf="ocultarCtg; else elseBlock">
-          <h1>{{this.categoria.nombre}}</h1>
-        </div>
-        <ng-template #elseBlock>
+    </div>
+
+
+    <div class="col-6 pos2">
+      <div
+        class="flex align-items-center justify-content-center bg-primary-reverse font-bold m-2 border-round"
+        style="width: 700px; min-width: 200px; min-height: 280px">
+        <div *ngIf="cantidadDeBarras != 3 ; else elseBlock">
           <div class="grid">
             <div class="col">
-              <div class="text-center p-3 border-round-sm bg-primary font-bold">
-                <h1>JUGANDO POR CORONAS</h1>
-                <button *ngFor="let opcion of categorias"
-                  (click)="preguntaByCategoria(opcion.nombre)"
-                  [ngClass]="opcion.ganada ? 'btn-primario' : 'btn-secundario'"
-                  [disabled]="opcion.ganada"
-                  class="btn btn-primary flipleft animation-duration-100000 animation-iteration-1">
-                  {{opcion.nombre}}
-                </button>
+              <div class="text-center p-3 border-round-sm font-bold">
+                <p-button label="Generar pregunta"
+                  styleClass="p-button-rounded p-button-info"
+                  (click)="generarPregunta()"></p-button>
+              </div>
+            </div>
+            <div class="col-fixed" style="width: 300px">
+              <div class="text-center p-3 border-round-sm font-bold">
+                {{this.categoria.nombre}}
               </div>
             </div>
           </div>
-        </ng-template>
-      </ng-template>
-    </div>
-  </div>
-
-  <div class="col-6 pos3">
-    <div
-      class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round"
-      style="width: 700px; min-width: 200px; min-height: 280px">
-
-      <div class="grid">
-        <div class="col">
-          <div class="text-center p-3 border-round-sm bg-primary font-bold">
-            <h1>CORONAS GANADAS</h1>
-            <button *ngFor="let opcion of categorias"
-              [ngClass]="opcion.ganada ? 'btn-secundario' : 'btn-primario'"
-              [disabled]="true"
-              class="btn btn-primary flipleft animation-duration-100000 animation-iteration-1">
-              {{opcion.nombre}}
-            </button>
-          </div>
         </div>
+        <ng-template #elseBlock>
+          <div *ngIf="ocultarCtg; else elseBlock">
+            <h1>{{this.categoria.nombre}}</h1>
+          </div>
+          <ng-template #elseBlock>
+            <div class="grid">
+              <div class="col">
+                <div
+                  class="text-center p-3 border-round-sm font-bold">
+                  <h1>JUGANDO POR CORONAS</h1>
+                  <button *ngFor="let opcion of categorias"
+                    (click)="preguntaByCategoria(opcion.nombre)"
+                    [ngClass]="opcion.ganada ? 'btn-primario' : 'btn-secundario'"
+                    [disabled]="opcion.ganada"
+                    class="btn btn-primary flipleft animation-duration-100000 animation-iteration-1">
+                    {{opcion.nombre}}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </ng-template>
       </div>
-
     </div>
-  </div>
 
-  <div class="col-6 pos4">
-    <div
-      class="flex align-items-center justify-content-center bg-primary font-bold m-2 border-round"
-      style="width: 700px; min-width: 200px; min-height: 280px; flex-direction: column;">
-      <ng-template [ngIf]="pregunta">
-        <h3 class="text-center mt-5">{{pregunta.question}}</h3>
-      </ng-template>
-      <div class="col">
-        <div class="text-center p-3 border-round-sm bg-primary font-bold">
-          <div class="flex flex-wrap align-items-center justify-content-center">
-            <div class="flex align-items-center justify-content-center
-              font-bold bg-primary border-round m-2 px-5 py-3">
-              <ng-template [ngIf]="pregunta">
-                <button *ngFor="let opcion of opciones"
-                  (click)="cantidadDeBarras < 3 ? responder(opcion) : responderCorona(opcion)"
-                  class="btn btn-primary flipleft animation-duration-100000 animation-iteration-1">
-                  {{opcion}}
-                </button>
-              </ng-template>
+
+    <div class="col-6 pos4">
+      <div
+        class="flex align-items-center justify-content-center bg-primary-reverse font-bold m-2 border-round"
+        style="width: 700px; min-width: 200px; min-height: 280px; flex-direction: column;">
+        <ng-template [ngIf]="pregunta">
+          <h3 class="text-center mt-5">{{pregunta.question}}</h3>
+        </ng-template>
+        <div class="col">
+          <div class="text-center p-3 border-round-sm font-bold">
+            <div
+              class="flex flex-wrap align-items-center justify-content-center">
+              <div class="flex align-items-center justify-content-center bg-primary-revers
+                font-bold border-round m-2 px-5 py-3">
+                <ng-template [ngIf]="pregunta">
+                  <button *ngFor="let opcion of opciones"
+                    (click)="cantidadDeBarras < 3 ? responder(opcion) : responderCorona(opcion)"
+                    class="btn btn-primary flipleft animation-duration-100000 animation-iteration-1">
+                    {{opcion}}
+                  </button>
+                </ng-template>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
 </div>

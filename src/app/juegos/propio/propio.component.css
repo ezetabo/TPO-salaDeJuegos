@@ -1,8 +1,47 @@
-*{
-  background-color: aliceblue;
-  width: 100vw;
-  height: 100vh;
-  background-image: url('https://www.concordia.gob.ar/sites/default/files/construccion.png');
-  background-repeat: no-repeat;
-  background-position: center;
+.sudoku-block {
+  display: inline-block;
+  border: 1px solid rgb(17, 185, 190);
+  border-width: 1px 0 0 1px;
+  background-color: lightgray;
+  border: 2px solid rgb(17, 185, 190);
+  margin: 2px;
+}
+
+.sudoku-row {
+  display: flex;
+  border-bottom: 2px solid black;
+}
+
+.sudoku-cell {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid black;
+}
+
+.box {
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid black;
+  text-align: center;
+}
+
+/* .center-container {
+  margin-top: 3rem;
+  margin-left: 20rem;
+  display: flex;
+  align-items: center;
+
+} */
+
+.sudoku-table {
+  width: 100%;
+  max-width: 600px;
+}
+
+input[readonly] {
+  background-color: rgb(68, 113, 119);
+  color: black;
+  font-weight: bold;
 }
