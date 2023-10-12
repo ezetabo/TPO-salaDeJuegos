@@ -27,29 +27,6 @@
       </div>
     </div>
 
-    <div class="col-6 pos3">
-      <div
-        class="flex align-items-center justify-content-center bg-primary-reverse font-bold m-2 border-round"
-        style="width: 700px; min-width: 200px; min-height: 280px">
-
-        <div class="grid">
-          <div class="col">
-            <div class="text-center p-3 border-round-sm font-bold">
-              <h1>CORONAS GANADAS</h1>
-              <button *ngFor="let opcion of categorias"
-                [ngClass]="opcion.ganada ? 'btn-secundario' : 'btn-primario'"
-                [disabled]="true"
-                class="btn btn-primary flipleft animation-duration-100000 animation-iteration-1">
-                {{opcion.nombre}}
-              </button>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-
     <div class="col-6 pos2">
       <div
         class="flex align-items-center justify-content-center bg-primary-reverse font-bold m-2 border-round"
@@ -95,19 +72,45 @@
       </div>
     </div>
 
-
-    <div class="col-6 pos4">
+    <div class="col-6 pos3">
       <div
         class="flex align-items-center justify-content-center bg-primary-reverse font-bold m-2 border-round"
+        style="width: 700px; min-width: 200px; min-height: 280px">
+        <div class="grid">
+          <div class="col">
+            <div class="text-center p-3 border-round-sm font-bold">
+              <h1>CORONAS GANADAS</h1>
+              <button *ngFor="let opcion of categorias"
+                [ngClass]="opcion.ganada ? 'btn-secundario' : 'btn-primario'"
+                [disabled]="true"
+                class="btn btn-primary flipleft animation-duration-100000 animation-iteration-1">
+                {{opcion.nombre}}
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="col-6 pos4"
+      [ngStyle]="{
+      'background-image': 'url(' + imagenDeFondo + ')',
+      'background-size': '720px 600px',
+      'background-repeat': 'no-repeat'
+    }">
+      <div
+        class="flex align-items-center justify-content-center  font-bold m-2 border-round"
         style="width: 700px; min-width: 200px; min-height: 280px; flex-direction: column;">
         <ng-template [ngIf]="pregunta">
-          <h3 class="text-center mt-5">{{pregunta.question}}</h3>
+          <h3 class="preg text-center mt-5">{{pregunta.question}}</h3>
         </ng-template>
         <div class="col">
           <div class="text-center p-3 border-round-sm font-bold">
             <div
               class="flex flex-wrap align-items-center justify-content-center">
-              <div class="flex align-items-center justify-content-center bg-primary-revers
+              <div
+                class="flex align-items-center justify-content-center bg-primary-revers
                 font-bold border-round m-2 px-5 py-3">
                 <ng-template [ngIf]="pregunta">
                   <button *ngFor="let opcion of opciones"
@@ -122,6 +125,6 @@
         </div>
       </div>
     </div>
-  </div>
 
+  </div>
 </div>

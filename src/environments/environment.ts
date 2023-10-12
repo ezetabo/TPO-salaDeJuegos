@@ -18,5 +18,9 @@ export const environment = {
   cardsShuffle1: 'https://deckofcardsapi.com/api/deck/',
   cardsShuffle2: '/?remaining=',
   cardsBack: 'https://deckofcardsapi.com/static/img/back.png',
-
+  sodokuURL:'https://sudoku-api.vercel.app/api/dosuku',
+  img:{
+    apikey:'RYruyUfhr9kzMUJJ9y5CXdX1HLCLFLDrXZz0IpWSzbrG1xXBZ2rqPVF2',
+    url:'https://api.pexels.com/v1/search?query='
+  },
 }

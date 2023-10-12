@@ -14,6 +14,7 @@ export class PropioComponent {
   public sudokuData!: Grid;
   public sudokuJugador?: Grid;
   public solution: boolean = false;
+  public intentos: number = 0;
 
   constructor(private sS: SodokuService) { }
 
@@ -22,11 +23,15 @@ export class PropioComponent {
       this.sudokuData = deepCopy(tbl);
       this.sudokuJugador = deepCopy(tbl);
       this.sudokuData.solution?.forEach(x => console.log(x));
+      this.intentos = 3;
     });
   }
 
   check() {
-    this.solution = !this.solution;
+    if (this.sudokuJugador && this.intentos > 0) {
+      this.solution = !this.solution;
+      this.intentos -= 1;
+    }
   }
 
 
