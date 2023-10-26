@@ -41,6 +41,10 @@ const routes: Routes = [
         loadChildren: () => import('../juegos/propio/propio.module').then(m => m.PropioModule)
       },
       {
+        path: 'encuesta',
+        loadChildren: () => import('./encuesta/encuesta.module').then(m => m.EncuestaModule)
+      },
+      {
         path: '**',
         loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
       }

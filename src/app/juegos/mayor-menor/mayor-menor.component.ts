@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Card, Mazo } from 'src/app/interfaces/mazo.interface';
 import { MazoInfo } from 'src/app/interfaces/mazoInfo.interface';
 import { CardsService } from 'src/app/services/cards.service';
+import { ScoreService } from 'src/app/services/score.service';
 import { environment } from 'src/environments/environment';
 
 @Component({
@@ -28,7 +29,7 @@ export class MayorMenorComponent implements OnInit {
   public estado: string = 'ok';
 
 
-  constructor(private srvCards: CardsService) { }
+  constructor(private srvCards: CardsService, private sc: ScoreService) { }
   ngOnInit(): void {
     this.getMazoInfo();
   }
@@ -63,11 +64,16 @@ export class MayorMenorComponent implements OnInit {
 
   jugar(eleccion: string): void {
     let resultado = 'gano';
+    if (this.mazo.remaining == 50) {
+      this.sc.resultados.mayorMenor.partidas += 1;
+      this.sc.resultados.mayorMenor.ultimaJugada = new Date().toISOString();
+    }
     if (this.mazo!.remaining > 0) {
       if ((eleccion === 'mayor' && this.cartaActual.number <= this.cartaSiguiente.number) ||
         (eleccion === 'menor' && this.cartaActual.number >= this.cartaSiguiente.number)) {
         resultado = 'ok';
         this.score += 1;
+        this.sc.resultados.mayorMenor.ganadas += 1;
         this.actualizarMano();
         console.log(this.cartaSiguiente.number, this.mazo.remaining);
       } else {
@@ -75,6 +81,7 @@ export class MayorMenorComponent implements OnInit {
         this.actualizarMano();
       }
     }
+    this.sc.guardar(this.sc.resultados.mayorMenor, 'mayorMenor');
     this.estado = resultado;
 
   }

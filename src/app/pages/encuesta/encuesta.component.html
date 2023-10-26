@@ -1,0 +1,139 @@
+<div class="mi-form p-3 ">
+  <div class="row " >
+    <div class="col-md-12">
+      <h2>Encuesta</h2>
+      <hr>
+      <div class="row">
+        <div class="col">
+
+          <form autocomplete="off" [formGroup]="myForm" (ngSubmit)="onSubmit()">
+
+            <!-- Nombre -->
+            <div >
+              <label for="nombreCompleto" class="form-label">Nombre</label>
+              <input type="text"
+                class="form-control"
+                formControlName="nombreCompleto"
+                placeholder="Ingrese su nombre"
+                id="nombreCompleto">
+
+              <span class="form-text text-danger"
+                *ngIf="isValidField('nombreCompleto')">
+                Debe ser en formato solo letras.
+              </span>
+              <hr>
+            </div>
+
+            <!-- edad -->
+            <div >
+              <label for="edad" class="form-label">Edad</label>
+              <input type="number"
+                step="1"
+                class="form-control"
+                formControlName="edad"
+                placeholder="ingrese su edad"
+                id="edad">
+
+              <span class="form-text text-danger" *ngIf="isValidField('edad')">
+                Debe ser numerico (entre 18 y 99).
+              </span>
+              <hr>
+            </div>
+
+            <!-- telefono -->
+            <div >
+              <label for="telefono" class="form-label">Telefono</label>
+              <input type="text"
+                class="form-control"
+                formControlName="telefono"
+                placeholder="ingrese su telefono"
+                id="telefono">
+
+              <span class="form-text text-danger"
+                *ngIf="isValidField('telefono')">
+                Debe ser numerico, sin espacio ni guiones (entrer 6 y 10 caracteres).
+              </span>
+              <hr>
+            </div>
+
+            <!-- quiereNotificaciones -->
+            <div class="row mb-3">
+              <label class="col-sm-3 col-form-label">quiere Notificaciones?</label>
+              <div class="col-sm-9">
+
+                <div class="form-check form-switch ">
+                  <input class="form-check-input"
+                    type="checkbox"
+                    formControlName="quiereNotificaciones"
+                    id="flexSwitchCheckChecked">
+                  <label class="form-check-label" for="flexSwitchCheckChecked">SI</label>
+                </div>
+
+              </div>
+              <hr>
+            </div>
+
+            <!-- Radio -->
+            <div class="row">
+              <label class="col-sm-3 col-form-label">Como nos conocio?</label>
+              <div class="col-sm-9">
+                <div class="form-check">
+                  <input class="form-check-input"
+                    type="radio"
+                    value="Por un amigo"
+                    formControlName="comoLlego"
+                    id="radioAmigo">
+                  <label class="form-check-label" for="radioAmigo">
+                    Por un amigo
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input class="form-check-input"
+                    type="radio"
+                    value="Los busque en google"
+                    formControlName="comoLlego"
+                    id="radioGoogle">
+                  <label class="form-check-label" for="radioGoogle">
+                    Los busque en Google
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input class="form-check-input"
+                    type="radio"
+                    value="otros"
+                    formControlName="comoLlego"
+                    id="radioOtros">
+                  <label class="form-check-label" for="radioOtros">
+                    otros
+                  </label>
+                </div>
+
+              </div>
+              <hr>
+            </div>
+
+            <!-- opinion -->
+            <div >
+              <label for="sugerencia" class="form-label">Sugerencia</label>
+              <textarea
+                class="form-control"
+                formControlName="sugerencia"
+                placeholder="Escribe tu sugerencia"
+                id="sugerencia"></textarea>
+
+              <span class="form-text text-danger"
+                *ngIf="isValidField('sugerencia')">
+                el campo es requerido.
+              </span>
+            </div>
+
+            <button class="btn btn-primary" type="submit">Crear</button>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

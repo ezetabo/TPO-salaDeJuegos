@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ScoreService } from 'src/app/services/score.service';
 import { WordApiService } from 'src/app/services/words.service';
 
 @Component({
@@ -6,9 +7,9 @@ import { WordApiService } from 'src/app/services/words.service';
   templateUrl: './ahorcado.component.html',
   styleUrls: ['./ahorcado.component.css']
 })
-export class AhorcadoComponent implements OnInit {
+export class AhorcadoComponent {
   public title: string = "Ahorcado";
-  public idioma:string = 'es';
+  public idioma: string = 'es';
   public palabra: string = "";
   public palabraOculta: string = "";
   public intentos: number = 0;
@@ -16,14 +17,10 @@ export class AhorcadoComponent implements OnInit {
   public perdio: boolean = false;
   public letras: string[] = [
     "a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l",
-    "m", "n",'ñ', "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
+    "m", "n", 'ñ', "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"
   ];
   letrasClickeadas: { [key: string]: boolean } = {};
-  constructor(private serv: WordApiService) { }
-
-  ngOnInit(): void {
-    this.inicializarJuego();
-  }
+  constructor(private serv: WordApiService, private score: ScoreService) { }
 
   inicializarJuego(): void {
     this.serv.getRandomWord(this.idioma)
@@ -32,6 +29,9 @@ export class AhorcadoComponent implements OnInit {
         this.palabra = word.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
         this.palabraOculta = "_ ".repeat(this.palabra.length);
       });
+    this.score.resultados.ahorcado.partidas += 1;
+    this.score.resultados.ahorcado.ultimaJugada = new Date().toISOString();
+    this.score.guardar(this.score.resultados.ahorcado,'ahorcado');
     this.intentos = 0;
     this.gano = false;
     this.perdio = false;
@@ -59,11 +59,13 @@ export class AhorcadoComponent implements OnInit {
     if (palabraEvaluar === this.palabra) {
       this.gano = true;
       console.log("Usuario GANO");
+      this.score.resultados.ahorcado.ganadas += 1;
     }
     if (this.intentos === 9) {
       this.perdio = true;
       console.log("Usuario perdio");
     }
+    this.score.guardar(this.score.resultados.ahorcado,'ahorcado');
   }
 
   existeLetra(letra: string): void {

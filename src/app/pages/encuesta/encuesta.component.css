@@ -1,0 +1,12 @@
+/* styles.css */
+.mi-form {
+  transform: scale(0.8);
+  background-color: rgb(220, 245, 223);
+  border-radius: 2%;
+  margin: 0;
+  position: inherit;
+  top: 0;
+  left: 0;
+
+}
+

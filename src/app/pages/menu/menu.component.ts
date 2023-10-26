@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { MenuItem } from 'primeng/api';
 
+
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -58,6 +59,11 @@ export class MenuComponent implements OnInit {
         label: 'Chat',
         icon: 'pi pi-comments',
         routerLink: 'chat'
+      },
+      {
+        label: 'Encuesta',
+        icon: 'pi pi-file-edit',
+        routerLink: 'encuesta'
       }
     ];
   }
@@ -72,4 +78,5 @@ export class MenuComponent implements OnInit {
         this.userEmail = this.userEmail != null ? null : email;
       });
   }
+
 }

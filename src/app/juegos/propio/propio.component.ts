@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { isEqual } from 'lodash';
 import { Grid } from 'src/app/interfaces/tablero.interface';
+import { ScoreService } from 'src/app/services/score.service';
 import { SodokuService } from 'src/app/services/sodoku.service';
 import { deepCopy } from 'src/app/utils/helper-functions';
 import Swal from 'sweetalert2';
@@ -16,7 +17,8 @@ export class PropioComponent {
   public solution: boolean = false;
   public intentos: number = 0;
 
-  constructor(private sS: SodokuService) { }
+  constructor(private sS: SodokuService, private score: ScoreService) { }
+
 
   newGame(): void {
     this.sS.getGrid().subscribe(tbl => {
@@ -25,6 +27,9 @@ export class PropioComponent {
       this.sudokuData.solution?.forEach(x => console.log(x));
       this.intentos = 3;
     });
+    this.score.resultados.sodoku.partidas += 1;
+    this.score.resultados.sodoku.ultimaJugada = new Date().toISOString();
+    this.score.guardar(this.score.resultados.sodoku,'sodoku');
   }
 
   check() {
@@ -47,6 +52,8 @@ export class PropioComponent {
 
     if (this.sudokuData) {
       if (this.areMatricesEqual()) {
+        this.score.resultados.sodoku.ganadas += 1;
+        this.score.guardar(this.score.resultados.sodoku,'sodoku');
         console.log('Las matrices son iguales');
         Swal.fire({
           position: 'center-end',

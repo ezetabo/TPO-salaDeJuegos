@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { ScoreDBService } from 'src/app/services/scoreDB.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -17,7 +18,7 @@ export class RegisterComponent {
     password: null
   }
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private scDB: ScoreDBService) { }
 
   registrarse() {
     const { email, password } = this.usuario
@@ -32,6 +33,7 @@ export class RegisterComponent {
                 .then(res => {
                   if (res) {
                     console.log('registro Ok');
+                    this.scDB.crear(email);
                     this.router.navigateByUrl('menu');
                   } else {
                     console.log('registro error');
