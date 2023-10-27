@@ -72,7 +72,7 @@ export class PreguntadosComponent implements OnInit {
   responder(res: string, corona: boolean = false): boolean {
     let ok = false;
     this.sc.resultados.preguntados.preguntas += 1;
-    this.sc.resultados.preguntados.ultimaJugada = new Date().toISOString();
+    this.sc.resultados.preguntados.ultimaJugada = new Date().toString();
     if (this.pregunta!.correct_answer === res) {
       this.cantidadDeBarras += 1;
       this.correctas += 1;

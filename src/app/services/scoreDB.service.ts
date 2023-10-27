@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, collection, deleteDoc, doc, onSnapshot, query, setDoc, updateDoc, where } from '@angular/fire/firestore';
+import { Firestore, collection, deleteDoc, doc, onSnapshot, setDoc, updateDoc } from '@angular/fire/firestore';
 import { Jugar, Preguntados, Resultados } from '../interfaces/resultados.interface';
 import { Observable } from 'rxjs';
 
@@ -84,17 +84,17 @@ export class ScoreDBService {
       ahorcado: {
         partidas: hl.ahorcado.partidas,
         ganadas: hl.ahorcado.ganadas,
-        ultmaJugada:  hl.ahorcado.ultimaJugada
+        ultimaJugada:  hl.ahorcado.ultimaJugada
       },
       mayorMenor: {
         partidas: hl.mayorMenor.partidas,
         ganadas: hl.mayorMenor.ganadas,
-        ultmaJugada: hl.mayorMenor.ultimaJugada
+        ultimaJugada: hl.mayorMenor.ultimaJugada
       },
       sodoku: {
         partidas: hl.sodoku.partidas,
         ganadas: hl.sodoku.ganadas,
-        ultmaJugada: hl.sodoku.ultimaJugada
+        ultimaJugada: hl.sodoku.ultimaJugada
       },
       preguntados: {
         partidas: hl.preguntados.partidas,
@@ -107,7 +107,7 @@ export class ScoreDBService {
         historia: hl.preguntados.historia,
         arte: hl.preguntados.arte,
         entretenimiento: hl.preguntados.partidas,
-        ultmaJugada: hl.preguntados.ultimaJugada
+        ultimaJugada: hl.preguntados.ultimaJugada
       }
     }
 

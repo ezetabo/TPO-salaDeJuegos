@@ -28,7 +28,7 @@ export class PropioComponent {
       this.intentos = 3;
     });
     this.score.resultados.sodoku.partidas += 1;
-    this.score.resultados.sodoku.ultimaJugada = new Date().toISOString();
+    this.score.resultados.sodoku.ultimaJugada = new Date().toString();
     this.score.guardar(this.score.resultados.sodoku,'sodoku');
   }
 

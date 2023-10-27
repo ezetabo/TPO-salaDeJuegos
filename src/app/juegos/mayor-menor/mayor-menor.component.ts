@@ -66,7 +66,7 @@ export class MayorMenorComponent implements OnInit {
     let resultado = 'gano';
     if (this.mazo.remaining == 50) {
       this.sc.resultados.mayorMenor.partidas += 1;
-      this.sc.resultados.mayorMenor.ultimaJugada = new Date().toISOString();
+      this.sc.resultados.mayorMenor.ultimaJugada = new Date().toString();
     }
     if (this.mazo!.remaining > 0) {
       if ((eleccion === 'mayor' && this.cartaActual.number <= this.cartaSiguiente.number) ||

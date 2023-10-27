@@ -30,7 +30,7 @@ export class AhorcadoComponent {
         this.palabraOculta = "_ ".repeat(this.palabra.length);
       });
     this.score.resultados.ahorcado.partidas += 1;
-    this.score.resultados.ahorcado.ultimaJugada = new Date().toISOString();
+    this.score.resultados.ahorcado.ultimaJugada = new Date().toString();
     this.score.guardar(this.score.resultados.ahorcado,'ahorcado');
     this.intentos = 0;
     this.gano = false;
