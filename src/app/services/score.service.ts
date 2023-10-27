@@ -37,15 +37,17 @@ export class ScoreService {
   constructor(private scDB: ScoreDBService, private authService: AuthService) {
     this.authService.getUserEmail().subscribe(email => {
       this.resultados.usuario = email!;
-      this.scDB.traer().subscribe(rsl => {
-        if (rsl) {
-          rsl.forEach(x => {
-            if (x.usuario = this.resultados.usuario) {
-              this.resultados = x;
-            }
-          })
-        }
-      });
+    });
+    this.scDB.traer().subscribe(rsl => {
+      console.log(rsl);
+      if (rsl) {
+        rsl.forEach(x => {
+
+          if (x.usuario == this.resultados.usuario) {
+            this.resultados = x;
+          }
+        })
+      }
     });
   }
 
